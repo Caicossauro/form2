@@ -1,3 +1,9 @@
+<label>Código</label>
+<input type="text" id="codigo" name="codigo" placeholder="Digite o código" autocomplete="off" required>
+<button type="button" onclick="buscarDescricao()">Buscar</button>
+<p id="descricao"></p>
+
+<script>
 function buscarDescricao() {
   var codigo = document.getElementById("codigo").value;
   var url = "https://raw.githubusercontent.com/Caicossauro/form2/main/ASD.json";
@@ -20,3 +26,26 @@ function buscarDescricao() {
       console.log(error);
     });
 }
+
+document.querySelector("form").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  // Obtenha os dados do formulário
+  var form = event.target;
+  var formData = new FormData(form);
+
+  // Adicione a descrição ao FormData
+  var descricao = document.getElementById("descricao").textContent;
+  formData.append("descricao", descricao);
+
+  // Envie os dados do formulário
+  axios.post("https://api.staticforms.xyz/submit", formData)
+    .then(function(response) {
+      // Processar a resposta ou redirecionar para uma página de agradecimento
+      window.location.href = "https://caicossauro.github.io/form2/obrigado.html";
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+});
+</script>
