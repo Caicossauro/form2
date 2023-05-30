@@ -1,9 +1,3 @@
-<label>Código</label>
-<input type="text" id="codigo" name="codigo" placeholder="Digite o código" autocomplete="off" required>
-<button type="button" onclick="buscarDescricao()">Buscar</button>
-<p id="descricao"></p>
-
-<script>
 function buscarDescricao() {
   var codigo = document.getElementById("codigo").value;
   var url = "https://raw.githubusercontent.com/Caicossauro/form2/main/ASD.json";
@@ -48,4 +42,3 @@ document.querySelector("form").addEventListener("submit", function(event) {
       console.log(error);
     });
 });
-</script>
